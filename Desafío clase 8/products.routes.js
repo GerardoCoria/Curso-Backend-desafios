@@ -27,4 +27,21 @@ router.post('/', (req, res) => {
     return res.json(newProduct);
 });
 
+router.put('/:idProduct', (req, res) => {
+    const {idProduct} = req.params;
+    const {name, price} = req.body;
+    const index = products.findIndex(product => product.id === idProduct);
+    products[index]={
+        id: products[index].id,
+        name,
+        price
+    };
+})
+
+router.delete('/:idProduct', (req, res) => {
+    const {idProduct} = req.params;
+    const index = products.findIndex(product => product.id === idProduct);
+    products.splice(index, 1);
+})
+
 module.exports = router;
