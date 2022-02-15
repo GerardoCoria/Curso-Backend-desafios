@@ -1,6 +1,22 @@
 const express = require('express');
 const router = express.Router();
-const products = require('./products.js');
+const products = require('./products');
+
+
+class Product {
+    constructor(name, price) {
+        this.id = id;
+        this.name = name;
+        this.price = price;
+    };
+    newItem() {
+        return {
+            name: this.name,
+            price: this.price
+        }
+    }
+};
+
 
 router.get('/', (req, res) => {
     res.send(products);
@@ -16,13 +32,16 @@ router.get('/:idProduct', (req, res) => {
     }
 });
 
+
+
 router.post('/', (req, res) => {
     const {name, price} = req.body;
-    const newProduct = {
-        id: products.length + 1,
+    const newProduct = new Product(
         name,
-        price
-    };
+        price,
+        id = products.length + 1
+    );
+
     products.push(newProduct);
     return res.json(newProduct);
 });
