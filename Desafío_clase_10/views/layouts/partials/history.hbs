@@ -1,0 +1,12 @@
+<h2>Historial</h2>
+{{#if products}}
+{{#each products}}
+<p>{{this.name}} - {{this.price}}</p>
+
+{{/each}}
+{{/if}}
+
+{{#unless products}}
+<p>No hay productos!</p>
+{{/unless}}
+

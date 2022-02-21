@@ -1,0 +1,23 @@
+<h1>Historial</h1>
+<% if (products.length > 0) { %>
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Precio</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% products.forEach(product=>{ %>
+        <tr>
+            <td><%= product.name %></td>
+            <td><%= product.price %></td>
+        </tr>
+        <% }); %>
+    </tbody>
+</table>
+<% } else { %>
+<p>No hay productos</p>
+<% } %>
+
+<button><a href="/">Volver</a></button>
