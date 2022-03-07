@@ -19,3 +19,9 @@ Para iniciar la aplicación:
 ```
 $ npm start
 ```
+## Protección de rutas
+Las rutas de la aplicación son protegidas por un middleware. Esto está implementado en el archivo "userForbidden.js". En dicho archivo, la constante "user" está seteada en "false", pudiendose cambiarla.
+
+## Prueba de la aplicación
+Para probar la aplicación, se debe instalar y ejecutar "Postman", que es una aplicación que sirve para verificar los métodos GET, POST, PUT y DELETE.
+Para descargar Postman, vaya a: https://www.postman.com/downloads/

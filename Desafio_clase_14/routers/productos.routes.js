@@ -19,7 +19,7 @@ router.get('/productos/:id', (req, res) => {
     res.send(producto);
 });
 
-router.use(userForbidden);
+// router.use(userForbidden);
 
 //RUTA POST PARA CREAR UN PRODUCTO
 router.post('/productos', userForbidden, (req, res) => {
