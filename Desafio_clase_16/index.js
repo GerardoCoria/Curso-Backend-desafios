@@ -43,9 +43,9 @@ io.on('connection', socket=>{
             nameP: product.nameP,
             price: product.price
         });
-        
+
         updateTable({
-            nameP: product.nameP,
+            name: product.nameP,
             price: product.price
         })
 

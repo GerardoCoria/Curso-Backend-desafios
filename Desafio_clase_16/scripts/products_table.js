@@ -67,7 +67,6 @@ const deleteTable= async () => {
         }
     }
 
-
 module.exports = {
     creatingTable,
     readTable,
