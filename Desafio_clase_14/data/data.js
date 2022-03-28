@@ -2,7 +2,7 @@ const productos = [
     {
         id: 1,
         name: "Chocolate negro en rama",
-        price: 500,
+        price: 530,
         description: "Realizado por nuestros maestros chocolateros, sobre mesadas de mármol.  Peso: 100 gr."
     },
     {
@@ -14,7 +14,7 @@ const productos = [
     {
         id:3,
         name: "Helado 'Bariloche'",
-        price: "330",
+        price: 330,
         description: "Crema helada de chocolate con nueces acarameladas, trocitos de chocolate y crocante de mani."
     },
     {
@@ -22,79 +22,119 @@ const productos = [
         name: "Ositos de chocolate",
         price: 400,
         description: "Ositos de Chocolate Leche y Blanco Peso: 60 Grs. 5 ositos surtidos rellenos con dulce de leche."
+    },
+    {
+        id:5,
+        name: "Dinosaurios de chocolate",
+        price: 500,
+        description: "Peso: 60 gr. Set de tres figuras de dinosaurios de chocolate con leche. Ideal para que los niños disfruten.",
+    },
+    {
+        id:6,
+        name: "Chocolate con almendras",
+        price: 800,
+        description: "Tableta de chocolate leche con Almendras. Para compartir en familia. Peso: 300 gr.",
+    },
+    {
+        id:7,
+        name: "Huevo de chocolate",
+        price: 770,
+        description: "Peso: 90 gr. Tamaño mediano. Huevo de chocolate con leche o de chocolate blanco. Contiene confituras en su interior. La decoración es con chocolate.",
+    },
+    {
+        id:8,
+        name: "Helado de frambuesa con chocolate",
+        price: 350,
+        description: "Delicioso postre hecho con el mejor chocolate y las frutas típicas de la región. Peso: 250 gr.",
+    },
+    {
+        id:9,
+        name: "Chocolate para taza",
+        price: 380,
+        description: "Ideal para un clásico submarino. Se puede derretir y utilizar como cobertura. Para repostería en rellenos de muffins, budines y tortas. Peso: 100 gr.",
+    },
+    {
+        id:10,
+        name: "Alfajor blanco",
+        price: 700,
+        description: "Pack de 6 unidades de deliciosos alfajores bañados en chocolate blanco, rellenos con dulce de leche.",
+    },
+    {
+        id:11,
+        name: "Chocolate amargo",
+        price: 660,
+        description: "Cacao 70 %. Libre de gluten. Sin T.A.C.C. Peso: 100 gr.",
     }
-        // id:
-        // name:
-        // price:
-        // description:
-    // {
-    //     "stock": 80,
-    //     "img": "/dinosaurios.jpg",
-    //     "descripcion": "Peso: 60 gr. Set de tres figuras de dinosaurios de chocolate con leche. Ideal para que los niños disfruten.",
-    //     "seccion": "6",
-    //     "precio": 650,
-    //     "nombre": "Dinosaurios de chocolate",
-    //     "id": "CJZcW8MdCX4kZYkjpasJ"
-    // },
-    // {
-    //     "stock": 40,
-    //     "seccion": "1",
-    //     "nombre": "Chocolate con almendras",
-    //     "precio": 800,
-    //     "img": "/almendra.jpg",
-    //     "descripcion": "Tableta de chocolate leche con Almendras. Para compartir en familia. Peso: 300 gr.",
-    //     "id": "GAnQiCKiEeYxkCywYJ1L"
-    // },
-    // {
-    //     "seccion": "6",
-    //     "img": "/huevo.jpg",
-    //     "descripcion": "Peso: 90 gr. Tamaño mediano. Huevo de chocolate con leche o de chocolate blanco. Contiene confituras en su interior. La decoración es con chocolate.",
-    //     "nombre": "Huevo de chocolate",
-    //     "stock": 80,
-    //     "precio": 750,
-    //     "id": "S7iFQCRXorBmBM41Kr5m"
-    // },
-    // {
-    //     "descripcion": "Delicioso postre hecho con el mejor chocolate y las frutas típicas de la región. Peso: 250 gr.",
-    //     "precio": "350",
-    //     "seccion": "3",
-    //     "stock": 30,
-    //     "nombre": "Helado de frambuesa con chocolate",
-    //     "img": "/helado-frambuesa.jpg",
-    //     "id": "SftoBoB7W84D03kyewbn"
-    // },
-    // {
-    //     "img": "/submarino.jpg",
-    //     "stock": 30,
-    //     "precio": 380,
-    //     "nombre": "Chocolate para taza",
-    //     "descripcion": "Ideal para un clásico submarino. Se puede derretir y utilizar como cobertura. Para repostería en rellenos de muffins, budines y tortas. Peso: 100 gr.",
-    //     "seccion": "1",
-    //     "id": "Sxnn6qzZLLWbvIm8vCCt"
-    // },
-    // {
-    //     "descripcion": "Pack de 6 unidades de deliciosos alfajores bañados en chocolate blanco, rellenos con dulce de leche.",
-    //     "img": "/alfajor-blanco.jpg",
-    //     "precio": 700,
-    //     "nombre": "Alfajor blanco",
-    //     "seccion": "2",
-    //     "stock": 50,
-    //     "id": "VSMIHKqIyUxoDt2txKhA"
-    // },
-    // {
-    //     "nombre": "Chocolate amargo",
-    //     "stock": 50,
-    //     "img": "/amargo.jpg",
-    //     "precio": 660,
-    //     "descripcion": "Cacao 70 %. Libre de gluten. Sin T.A.C.C. Peso: 100 gr.",
-    //     "seccion": "1",
-    //     "id": "WKGeVqajn7rXpAWRwdP5"
-    // },
+]
+const mensajes=
+[
+    {
+        id:1,
+        name: "Pedro",
+        time: "10:00",
+        message: "Hola, quiero comprar una caja de chocolate blanco y dulce."
+    },
+    {
+        id:2,
+        name: "Juan",
+        time: "10:05",
+        message: "Quiero un helado de chocolate."
+    },
+    {
+        id:3,
+        name: "María",
+        time: "10:10",
+        message: "Quiero una caja de chocolate con almendras."
+    },
+    {
+        id:4,
+        name: "Julieta",
+        time: "10:15",
+        message: "Hola, quiero chocolate blanco"
+    },
+    {
+        id:5,
+        name: "Pedro",
+        time: "10:20",
+        message: "Tengo $500"
+    },
+    {
+        id:6,
+        name: "Juan",
+        time: "10:25",
+        message: "yo tengo $1000"
+    },
+    {
+        id:7,
+        name: "María",
+        time: "10:30",
+        message: "No tengo dinero"
+    },
+    {
+        id:8,
+        name: "Julieta",
+        time: "10:35",
+        message: "Yo invito"
+    },
+    {
+        id:9,
+        name: "Pedro",
+        time: "10:40",
+        message: "Perfecto"
+    },
+    {
+        id:10,
+        name: "Juan",
+        time: "10:45",
+        mesage: "Chau a todos"
+    }
+]
+
     // {
     //     "img": "/bombom-amargo.jpg",
-    //     "precio": 1250,
-    //     "nombre": "Bombón amargo",
-    //     "descripcion": "Caja de 12 unidades. Bombón de chocolate semi amargo, con morse de café.",
+    //     "price": 1250,
+    //     "name": "Bombón amargo",
+    //     "description": "Caja de 12 unidades. Bombón de chocolate semi amargo, con morse de café.",
     //     "stock": 80,
     //     "seccion": "4",
     //     "id": "WnBWgkTBHGG3RMrOCLoI"
@@ -102,85 +142,84 @@ const productos = [
     // {
     //     "stock": 80,
     //     "img": "/caja-regalo.jpg",
-    //     "precio": 1400,
-    //     "descripcion": "Peso: 750 gr. Caja de bombones surtidos. La caja es ideal para regalar. Los bombones son: chocolate negro, blanco, amargo y relleno con dulce de leche.",
+    //     "price": 1400,
+    //     "description": "Peso: 750 gr. Caja de bombones surtidos. La caja es ideal para regalar. Los bombones son: chocolate negro, blanco, amargo y relleno con dulce de leche.",
     //     "seccion": "5",
-    //     "nombre": "Caja de bombones",
+    //     "name": "Caja de bombones",
     //     "id": "Y5wDLcmHwqL0AEjiSwkG"
     // },
     // {
-    //     "nombre": "Alfajores de frambuesa",
+    //     "name": "Alfajores de frambuesa",
     //     "seccion": "2",
     //     "stock": 40,
     //     "img": "/frambuesa.jpg",
-    //     "descripcion": "Pack de 6 unidades de alfajores, rellenos de dulce de frambuesa bañado con chocolate semi amargo.",
-    //     "precio": 750,
+    //     "description": "Pack de 6 unidades de alfajores, rellenos de dulce de frambuesa bañado con chocolate semi amargo.",
+    //     "price": 750,
     //     "id": "axV2C5NIgUaGh7JtXx7r"
     // },
     // {
-    //     "precio": 560,
+    //     "price": 560,
     //     "seccion": "1",
     //     "img": "/blanco.jpg",
-    //     "nombre": "Chocolate blanco en rama",
+    //     "name": "Chocolate blanco en rama",
     //     "stock": 50,
-    //     "descripcion": "Delicia hecha con manteca de cacao, leche en polvo y azúcar, con ausencia de cacao o pasta del mismo. Su sabor recuerda a la leche condensada. Peso: 100 gr.",
+    //     "description": "Delicia hecha con manteca de cacao, leche en polvo y azúcar, con ausencia de cacao o pasta del mismo. Su sabor recuerda a la leche condensada. Peso: 100 gr.",
     //     "id": "b6tl2UddvLX6TvISMej4"
     // },
     // {
-    //     "nombre": "Bombón con frutos del bosque",
-    //     "precio": 1300,
-    //     "descripcion": "Caja de 12 unidades. Bombón con confitura de frutos del bosque, bañado en chocolate blanco.",
+    //     "name": "Bombón con frutos del bosque",
+    //     "price": 1300,
+    //     "description": "Caja de 12 unidades. Bombón con confitura de frutos del bosque, bañado en chocolate blanco.",
     //     "img": "/bombom-frutos-bosque.jpg",
     //     "seccion": "4",
     //     "stock": 100,
     //     "id": "bNMiVCXNkn1HgnaHGshj"
     // },
     // {
-    //     "descripcion": "Ramo de 12 rosas de chocolate. Para regalar a tu novia, esposa, madre, hermana o a quien quieras. Las rosas pueden ser de chocolate macizo con leche, o bien semiamargo, o blanco o rellenas con dulce de leche.",
+    //     "description": "Ramo de 12 rosas de chocolate. Para regalar a tu novia, esposa, madre, hermana o a quien quieras. Las rosas pueden ser de chocolate macizo con leche, o bien semiamargo, o blanco o rellenas con dulce de leche.",
     //     "seccion": "5",
     //     "img": "/regalo-rosas.jpg",
-    //     "nombre": "Rosas de chocolate",
+    //     "name": "Rosas de chocolate",
     //     "stock": 90,
-    //     "precio": 1750,
+    //     "price": 1750,
     //     "id": "bj9QSRa2F4AJWMu9SDU8"
     // },
     // {
     //     "seccion": "6",
-    //     "descripcion": "Peso: 90 gr. Elaborados con chocolate macizo alpino semi-amargo, con leche o blanco.",
+    //     "description": "Peso: 90 gr. Elaborados con chocolate macizo alpino semi-amargo, con leche o blanco.",
     //     "stock": 90,
-    //     "nombre": "Conejito de chocolate",
+    //     "name": "Conejito de chocolate",
     //     "img": "/conejo.jpg",
-    //     "precio": 650,
+    //     "price": 650,
     //     "id": "dNyJiHtGQoFuxHtqVy5G"
     // },
     // {
     //     "img": "/helado-almendras.jpg",
-    //     "nombre": "Helado almendrado",
-    //     "precio": 400,
+    //     "name": "Helado almendrado",
+    //     "price": 400,
     //     "seccion": "3",
     //     "stock": 80,
-    //     "descripcion": "Crema helada de almendras con trozos de almendras acarameladas.",
+    //     "description": "Crema helada de almendras con trozos de almendras acarameladas.",
     //     "id": "h8BdNB9ewiKZQCrsk9Uh"
     // },
     // {
     //     "stock": 40,
-    //     "nombre": "Alfajores de chocolate",
+    //     "name": "Alfajores de chocolate",
     //     "seccion": "2",
-    //     "precio": 900,
+    //     "price": 900,
     //     "img": "/alfajor.jpg",
-    //     "descripcion": "Pack de 6 unidades de alfajores del más rico chocolate patagónico.",
+    //     "description": "Pack de 6 unidades de alfajores del más rico chocolate patagónico.",
     //     "id": "kz2gskRKURIgmDtFaOLf"
     // },
     // {
     //     "seccion": "5",
     //     "img": "/regalo.jpg",
-    //     "precio": 1600,
-    //     "nombre": "Estuche de bombones",
+    //     "price": 1600,
+    //     "name": "Estuche de bombones",
     //     "stock": 80,
-    //     "descripcion": "Caja de bombones finos, en su estuche. Ideal para regalar a un ser querido. La caja contiene 20 bombones surtidos.",
+    //     "description": "Caja de bombones finos, en su estuche. Ideal para regalar a un ser querido. La caja contiene 20 bombones surtidos.",
     //     "id": "olOLbhfwbU1laTtvXiuS"
     // }
-]
 
 const cart =[
     {

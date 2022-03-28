@@ -7,7 +7,7 @@ const port = process.env.PORT || 8080;
 const httpServer = http.createServer(app);
 const io = socketIo(httpServer);
 const moment = require('moment');
-const {creatingTable, readTable, updateTable, deleteTable} = require('./scripts/products_table.js');
+// const {creatingTable, readTable, updateTable, deleteTable} = require('./scripts/products_table.js');
 
 
 app.use(express.static('public'));
@@ -29,7 +29,7 @@ httpServer.listen(port, () => {
 const products= []
 const msj = []
 
-creatingTable();
+// creatingTable();
 
 io.on('connection', socket=>{
     console.log(`Nueva conexión, nuevo cliente N° ${socket.id} (soy el server)`);
@@ -44,10 +44,10 @@ io.on('connection', socket=>{
             price: product.price
         });
 
-        updateTable({
-            name: product.nameP,
-            price: product.price
-        })
+        // updateTable({
+        //     name: product.nameP,
+        //     price: product.price
+        // })
 
         io.emit('products', [...products]);
     })
