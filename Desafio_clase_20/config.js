@@ -13,7 +13,7 @@ module.exports = {
             uri: 'mongodb://localhost:27017/Desafio_clase_20',
         },
         firebase:{
-            certification: firebaseConfig
+            credential: firebaseConfig
         }
     }
 }
