@@ -1,4 +1,3 @@
-const path = require('path');
 const port = process.env.port || 8080;
 const pers = process.env.pers || 'mongo';
 const firebaseConfig = require('./db/firebase.config.json');

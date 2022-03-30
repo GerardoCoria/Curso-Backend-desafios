@@ -1,17 +1,39 @@
-const getAll = async (req, res, next) => {}
+const {productsDao} = require('../models/daos/index');
 
-const getById = async (req, res, next) => {}
+const productDao = productsDao;
 
-const create = async (req, res, next) => {}
 
-const updateById = async (req, res, next) => {}
+const getAllProducts = async (req, res, next) => {
+    try{
+        const products = await productDao.getAll();
+        res.json(products);
+    }
+    catch(err){
+        next(err);
+    }
+}
 
-const deleteById = async (req, res, next) => {}
+// const getProductsById = async (req, res, next) => {
+//     const {id} = req.params;
+//     try{
+//         const product = await productDao.getById(id);
+//         res.json(product);
+//     }
+//     catch(err){
+//         next(err);
+//     }
+// }
+
+// const createProducts = async (req, res, next) => {}
+
+// const updateProductsById = async (req, res, next) => {}
+
+// const deleteProductsById = async (req, res, next) => {}
 
 module.exports = {
-    getAll,
-    getById,
-    create,
-    updateById,
-    deleteById
+    getAllProducts,
+    // getById,
+    // create,
+    // updateById,
+    // deleteById
 }
