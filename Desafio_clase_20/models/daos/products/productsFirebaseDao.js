@@ -6,4 +6,4 @@ class productsFirebaseDao extends firebaseContainer{
     }
 }
 
-module.exports = productsFirebaseDao;
+module.exports = productsFirebaseDao; 

@@ -1,22 +1,22 @@
 const {Router} = require('express');
 const {
-    getAll,
-    getById,
-    create,
-    updateById,
-    deleteById
+    getAllCarts,
+    getCartsById,
+    createCarts,
+    updateCartsById,
+    deleteCartsById
 } = require('../../controllers/carts.controllers');
 
 const router = Router();
 
-router.get('/', getAll);
+router.get('/', getAllCarts);
 
-router.get('/:id', getById);
+router.get('/:id', getCartsById);
 
-router.post('/', create);
+router.post('/', createCarts);
 
-router.put('/:id', updateById);
+router.put('/:id', updateCartsById);
 
-router.delete('/:id', deleteById);
+router.delete('/:id', deleteCartsById);
 
 module.exports = router;

@@ -1,22 +1,22 @@
 const {env:{pers}} = require('../../config')
 
-let productsDao;
-let cartsDao;
+let ProductsDao;
+let CartsDao;
 
 switch(pers){
     case 'firebase':
-        productsDao = require('./products/productsFirebaseDao');
-        cartsDao = require('./carts/cartMongoDao');
+        ProductsDao = require('./products/productsFirebaseDao');
+        CartsDao = require('./carts/cartFirebaseDao');
         break;
-    case 'mongoDB':
-        productsDao = require('./products/productsMongoDao');
-        cartsDao = require('./carts/cartMongoDao');
+    case 'mongo':
+        ProductsDao = require('./products/productsMongoDao');
+        CartsDao = require('./carts/cartMongoDao');
         break;
     default:
         console.log('Persistence not supported');
 }
 
 module.exports = {
-    productsDao,
-    cartsDao,
+    ProductsDao,
+    CartsDao,
 }
