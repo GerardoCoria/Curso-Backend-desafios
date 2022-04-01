@@ -2,7 +2,7 @@ const firebaseContainer = require('../../containers/firebaseContainer');
 
 class cartFirebaseDao extends firebaseContainer{
     constructor (){
-        super ('cart')
+        super('cart')
     }
 }
 

@@ -1,4 +1,4 @@
-const {env:{pers}} = require('../../config')
+const {env:{pers}} = require('../../config');
 
 let ProductsDao;
 let CartsDao;

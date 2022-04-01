@@ -1,5 +1,5 @@
 const port = process.env.port || 8080;
-const pers = process.env.pers || 'mongo';
+const pers = process.env.pers;
 const firebaseConfig = require('./db/firebase.config.json');
 
 module.exports = {
