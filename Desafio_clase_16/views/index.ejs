@@ -9,7 +9,14 @@
 <body>
     <%-include ('./products.ejs') %>
     <%-include ('./chat.ejs')%>
+    <% for (const items of messages) { %>
+        <span style="color:blue"><strong><%= items.user %> dice:</strong></span>
+        <span style="color:green"><i><%= items.message %></i></span>
+        <span style="color:brown">[<%= items.time %>]</span>
+    <br>
+    <% } %>
     <script src="/socket.io/socket.io.js"></script>
+    <script src="../index.js"></script>
     <script src="./main.js"></script>
 </body>
 </html>

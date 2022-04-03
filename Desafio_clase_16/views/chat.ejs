@@ -2,9 +2,21 @@
 <div id="divChat">
     <span id="chatBox">
     </span>
-    <form  onsubmit="return addMsj(this)">
+    <!-- <form  onsubmit="return addMsj(this)">
         <input type="text" id="userName" placeholder="Ingrese su nombre"  required><br>
         <textarea id="textChat" placeholder="Ingrese su mensaje" required></textarea><br>
         <input type="submit" id="btnSendChat" value="Enviar">
+    </form> -->
+
+    <form action="/" method="post">
+        <input type="text" name="user" placeholder="Ingrese su nombre" value="<%=messages.user%>" required><br>
+        <textarea name="message" placeholder="Ingrese su mensaje" required><%=messages.message%></textarea><br>
+        <input type="submit" id="btnSendChat" value="Enviar mensaje">
     </form>
+   
+    <form action="/del" method="post">
+        <button type="submit">Borrar mensajes</button>
+    </form>
+    
 </div>
+

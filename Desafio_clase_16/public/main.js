@@ -1,3 +1,5 @@
+
+
 // CLIENTE
 const socket = io.connect();
 socket.on('products', (data, saludo) => {
@@ -41,6 +43,7 @@ const chatBox = document.getElementById('chatBox');
 const btnSendChat = document.getElementById('btnSendChat');
 
 function renderMsj(data){
+    
     const html = data.map((elem, index) => {
         return(`
             <div>
