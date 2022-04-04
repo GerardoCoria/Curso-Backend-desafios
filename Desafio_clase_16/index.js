@@ -9,11 +9,20 @@ const io = socketIo(httpServer);
 const moment = require('moment');
 const sqlite = require('sqlite3');
 const path = require('path');
+const mysql = require('mysql');
+const connectMysql = require('express-myconnection');
 
 
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+app.use(connectMysql(mysql, {
+    host: '127.0.0.1',
+    user: 'root',
+    password: '',
+    port: 3306,
+    database: 'desafio_clase_16'
+}, 'single'));
 
 
 const dbName = path.resolve(__dirname, 'db', 'ecommerce.sqlite');
@@ -47,7 +56,19 @@ app.get('/', (req, res) => {
             console.log(rows);
         }
     })
-})
+    req.getConnection((error, conn) => {
+        conn.query('SELECT * FROM products', (err, rows) => {
+            if (error) {
+                console.log(err.message);
+            }
+            else{
+                console.log('Conectado a MySQL');
+                console.log(rows);
+                res.render('index', {products: rows});
+            }
+        });
+    });
+});
 
 
 app.post('/',(req, res) => {
@@ -62,6 +83,16 @@ app.post('/',(req, res) => {
             console.log('Mensaje insertado');
         }
     })
+})
+
+app.post('/products', (req, res) => {
+    const data = req.body;
+    req.getConnection((error, conn) => {
+        conn.query('INSERT INTO products set ?', [data], (err, rows) => {
+            console.log(rows);  
+        })
+    })
+    res.redirect('/');
 })
 
 app.post('/del', (req, res) => {
@@ -83,6 +114,7 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
     res.render('index');
 });
+
 
 httpServer.listen(port, () => {
     console.log(`Server running on port ${port}`);

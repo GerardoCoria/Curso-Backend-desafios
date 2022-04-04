@@ -1,0 +1,16 @@
+{
+  "name": "Desafio_clase_22",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {},
+  "devDependencies": {
+    "faker": "^5.0.0"
+  }
+}
