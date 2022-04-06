@@ -9,7 +9,12 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies": {},
+  "dependencies": {
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "normalizr": "^3.6.2",
+    "socket.io": "^4.4.1"
+  },
   "devDependencies": {
     "faker": "^5.0.0"
   }
