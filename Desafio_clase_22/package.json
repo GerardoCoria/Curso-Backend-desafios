@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engine": {
+    "node": "16.x"
+  },
   "scripts": {
-    "start": "node index.js"
+    "start": "node ."
   },
   "keywords": [],
   "author": "",
@@ -12,6 +15,7 @@
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.3",
+    "moment": "^2.29.2",
     "normalizr": "^3.6.2",
     "socket.io": "^4.4.1"
   },

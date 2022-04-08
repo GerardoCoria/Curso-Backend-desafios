@@ -1,0 +1,21 @@
+[
+  {
+    "author": {
+      "id": "gg@gg",
+      "name": "Otto",
+      "age": 6,
+      "alias": "Peludito"
+    },
+    "text": "holaa, tengo hambre humano",
+    "time": "08/04/2022 01:26:13"
+  },
+  {
+    "author": {
+      "name": "Mielcita",
+      "age": "3",
+      "alias": "amenabar"
+    },
+    "text": "mmmm",
+    "time": "2022-04-08T04:26:45.030Z"
+  }
+]
