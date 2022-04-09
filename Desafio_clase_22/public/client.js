@@ -10,7 +10,7 @@ function renderMsj(data){
     const html = data.map((elem, index) => {
         return(`
         <div>
-            <span style="color:blue"><strong>${elem.author.name}</strong></span>
+            <span style="color:blue"><strong>${elem.commenter.name}</strong></span>
             <span style="color:brown">[${elem.time}]</span>
             <span>dice: </span>
             <span style="color:green"><i>${elem.text}</i></span>
@@ -27,7 +27,7 @@ function addMsj (){
     const msj = {
         name: document.getElementById('username').value,
         age: document.getElementById('age').value,
-        id: document.getElementById('email').value,
+        email: document.getElementById('email').value,
         alias: document.getElementById('alias').value,
         text: document.getElementById('text').value,
         time: new Date()
