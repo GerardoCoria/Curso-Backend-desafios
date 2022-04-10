@@ -6,9 +6,8 @@ const port = process.env.PORT || 8080;
 const socketIo = require('socket.io');
 const httpServer = http.createServer(app);
 const io = socketIo(httpServer);
-const {schema, normalize} = require('normalizr');
+const {schema, normalize, denormalize} = require('normalizr');
 const util = require('util');
-//const messages = JSON.parse(fs.readFileSync('./db/memory.json', 'utf8'));
 
 app.use(express.static('public'));
 app.use(express.json());
@@ -29,7 +28,6 @@ const products = () => {
     }
 }
 
-
 const messagesData = JSON.parse(fs.readFileSync('./db/memory.js', 'utf8'));
 const messages={
     id: 100,
@@ -40,15 +38,12 @@ app.set('views', './views');
 app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
     products();
-    res.render('index', {array, messagesData});
+    res.render('index', {array, messagesData, percent});
 });
 
 httpServer.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
-
-
-
 
 const authorSchema = new schema.Entity('name')
 const textSchema = new schema.Entity('text',{
@@ -57,14 +52,16 @@ const textSchema = new schema.Entity('text',{
 const messageSchema = new schema.Entity('message', {
     text: [textSchema],    
 });
-const normalizedMessages = normalize(messages, messageSchema);
+const normalizedMessages = normalize(messages, messageSchema);  
 console.log(util.inspect(normalizedMessages, false, 12, true));
-// console.log(bbbb)
-// console.log(bbbb.length)
-console.log('origin', JSON.stringify(messagesData).length);
-console.log('normalized', JSON.stringify(normalizedMessages).length);
+const originLength =JSON.stringify(messagesData).length;
 
+const normalizedLenght = JSON.stringify(normalizedMessages).length;
+const percent = (originLength - normalizedLenght) % 100;
+console.log('Compresión: %', percent);
 
+const denormalizeMessages = denormalize(normalizedMessages.result, messageSchema, normalizedMessages.entities);
+console.log(util.inspect(denormalizeMessages, false, 12, true));
 
 app.get('/*', (req, res) => {
     res.render('error');
@@ -93,7 +90,6 @@ io.on('connection', socket=>{
             }
         )
         
-        //fs.writeFileSync('./db/memory.json', JSON.stringify(messages, null, 2));
         fs.writeFileSync('./db/memory.js', JSON.stringify(messagesData, null, 2));
         io.emit('messages', [...messages]);
     })
