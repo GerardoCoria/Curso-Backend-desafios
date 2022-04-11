@@ -2,13 +2,6 @@ const admin = require("firebase-admin");
 const {getFirestore} = require('firebase-admin/firestore');
 const {dbConfig} = require('../../config')
 
-// let app = !admin.apps.length ? 
-// admin.initializeApp({
-//     credential: admin.credential.cert(dbConfig.firebase.credential),
-//     databaseURL: dbConfig.firebase.databaseURL}) 
-//     : admin.app();
-
-
 class firebaseContainer {
     constructor(coll){
         this.connect();
@@ -16,16 +9,13 @@ class firebaseContainer {
         this.query = db.collection(coll); 
     }
 
-
     connect(){
         if(!admin.apps.length){
             admin.initializeApp({
                 credential: admin.credential.cert(dbConfig.firebase.credential),
                 databaseURL: dbConfig.firebase.databaseURL})
         }
-        // admin.initializeApp({
-        // credential: admin.credential.cert(dbConfig.firebase.credential),
-        // });
+        
         console.log('Conectado a Firebase');
     }
 

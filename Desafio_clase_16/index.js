@@ -1,4 +1,5 @@
 //SERVIDOR WEB
+//DECLARACION DE VARIABLES
 const express = require('express');
 const app = express();
 const http = require('http');
@@ -12,10 +13,12 @@ const path = require('path');
 const mysql = require('mysql');
 const connectMysql = require('express-myconnection');
 
-
+//MIDDLEWARES
 app.use(express.static('public'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
+
+//CONEXION A MYSQL
 app.use(connectMysql(mysql, {
     host: '127.0.0.1',
     user: 'root',
@@ -24,7 +27,7 @@ app.use(connectMysql(mysql, {
     database: 'desafio_clase_16'
 }, 'single'));
 
-
+//CONEXION A SQLITE
 const dbName = path.resolve(__dirname, 'db', 'ecommerce.sqlite');
 const db = new sqlite.Database(dbName, err => {
     if (err) {
@@ -35,6 +38,7 @@ const db = new sqlite.Database(dbName, err => {
     }
 });
 
+//CREACION DE LA TABLA EN SQLITE
 const sqlCreate = 'CREATE TABLE IF NOT EXISTS messages(message TEXT, user TEXT, time INTEGER)';
 db.run(sqlCreate, err => {
     if (err) {
@@ -45,6 +49,8 @@ db.run(sqlCreate, err => {
     }
 });
 
+
+//RENDERIZADO DE LAS TABLAS SQLITE Y MYSQL
 app.get('/', (req, res) => {
     const sql = 'SELECT * FROM messages';
     db.all(sql, [], (err, rows) => {
@@ -65,12 +71,14 @@ app.get('/', (req, res) => {
                 console.log('Conectado a MySQL');
                 console.log(rows);
                 res.render('index', {products: rows});
+                console.log('producto 1: ' + rows[0].name);
             }
         });
     });
 });
 
 
+//INSERTAR DATOS EN SQLITE
 app.post('/',(req, res) => {
     const sqliteNew = 'INSERT INTO messages(user, message, time) VALUES(?,?,?)';
     const newSqlite = [req.body.user, req.body.message, moment()];
@@ -80,11 +88,11 @@ app.post('/',(req, res) => {
         }
         else{
             res.redirect('/');
-            console.log('Mensaje insertado');
         }
     })
 })
 
+//INSERTAR DATOS EN MYSQL
 app.post('/products', (req, res) => {
     const data = req.body;
     req.getConnection((error, conn) => {
@@ -95,6 +103,7 @@ app.post('/products', (req, res) => {
     res.redirect('/');
 })
 
+//BORRAR MENSAJES DE SQLITE
 app.post('/del', (req, res) => {
     const sqliteDel = 'DELETE FROM messages';
     db.run(sqliteDel, err => {
@@ -103,56 +112,25 @@ app.post('/del', (req, res) => {
         }
         else{
             res.redirect('/');
-            console.log('Mensaje eliminado');
         }
     })
 })
 
-
+//PLANTILLAS EJS
 app.set('views', './views');
 app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
     res.render('index');
 });
 
-
 httpServer.listen(port, () => {
     console.log(`Server running on port ${port}`);
 });
 
-// const products= []
-// const msj = []
-
-
 io.on('connection', socket=>{
     console.log(`Nueva conexión, nuevo cliente N° ${socket.id} (soy el server)`);
-
-//     socket.emit('products', [...products]);
-//     socket.emit('messages', [...msj]);
-
-//     socket.on('new-product', product => {
-//         products.push({
-//             nameP: product.nameP,
-//             price: product.price
-//         });
-
-
-//         io.emit('products', [...products]);
-//     })
-
-//     socket.on('new-message', (data) => {
-//         msj.push(
-//             {
-//                 user: data.user,
-//                 message: data.message,
-//                 time: moment().format('DD/MM/YYYY HH:mm:ss')
-//             }
-//         );
-//         io.emit('messages', [...msj]);
-//     })
-}
-);
+});
 
 app.get('/*', (req, res) => {
     res.send('<h1>Error 404: página no encontrada</h1>');
-})
+});

@@ -1,5 +1,3 @@
-
-
 // CLIENTE
 const socket = io.connect();
 socket.on('products', (data, saludo) => {
