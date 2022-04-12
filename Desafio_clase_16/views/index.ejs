@@ -11,6 +11,13 @@
 
     <%-include ('./chat.ejs')%>
 
+    <% for (const item of products) { %>
+        <div>
+            <%=item.name%>
+            <%=item.price%>
+        </div>
+    <% } %>
+
     <% for (const items of messages) { %>
         <span style="color:blue"><strong><%= items.user %> dice:</strong></span>
         <span style="color:green"><i><%= items.message %></i></span>

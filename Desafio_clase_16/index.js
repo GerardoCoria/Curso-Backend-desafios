@@ -12,6 +12,7 @@ const sqlite = require('sqlite3');
 const path = require('path');
 const mysql = require('mysql');
 const connectMysql = require('express-myconnection');
+const { builtinModules } = require('module');
 
 //MIDDLEWARES
 app.use(express.static('public'));
@@ -49,17 +50,23 @@ db.run(sqlCreate, err => {
     }
 });
 
-
+//traer los datos de sqlite y mysql
+// ver la logica a desarrollar aca:
 //RENDERIZADO DE LAS TABLAS SQLITE Y MYSQL
+
+
 app.get('/', (req, res) => {
+    const products = [];
+    const messages =  [];
+
+   
     const sql = 'SELECT * FROM messages';
     db.all(sql, [], (err, rows) => {
         if(err){
             console.log(err.message);
         }
         else{
-            res.render('index', {messages: rows});
-            console.log(rows);
+            console.log('rows msj!:', rows);
         }
     })
     req.getConnection((error, conn) => {
@@ -70,13 +77,13 @@ app.get('/', (req, res) => {
             else{
                 console.log('Conectado a MySQL');
                 console.log(rows);
-                res.render('index', {products: rows});
-                console.log('producto 1: ' + rows[0].name);
+                console.log('producto 1!: ' + rows[0].name);
             }
         });
     });
+    
+    res.render('index', {messages, products});
 });
-
 
 //INSERTAR DATOS EN SQLITE
 app.post('/',(req, res) => {
