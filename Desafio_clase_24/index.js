@@ -21,7 +21,7 @@ app.use(session({
     //     retries: 0
     // }),
     store: MongoStore.create({
-        mongoUrl: 'mongodb+srv://gcoria1989:gimeno666@cluster0.c5lzx.mongodb.net/sesiones?retryWrites=true&w=majority',
+        mongoUrl: 'mongodb+srv://gcoria1989:xxxxxx@cluster0.c5lzx.mongodb.net/sesiones?retryWrites=true&w=majority',
     }),
     rolling: true,
     cookie:{

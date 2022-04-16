@@ -59,7 +59,6 @@ app.get('/', (req, res) => {
     const products = [];
     const messages =  [];
 
-   
     const sql = 'SELECT * FROM messages';
     db.all(sql, [], (err, rows) => {
         if(err){
