@@ -1,5 +1,5 @@
 {
-  "name": "Desafio_clase_26",
+  "name": "Desafio_clase_28",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,9 +14,11 @@
     "bcrypt": "^5.0.1",
     "connect-mongo": "^4.6.0",
     "cookie-parser": "^1.4.6",
-    "ejs": "^3.1.6",
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.7",
     "express": "^4.17.3",
     "express-session": "^1.17.2",
+    "minimist": "^1.2.6",
     "mongodb": "^4.5.0",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0"
