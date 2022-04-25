@@ -113,7 +113,7 @@ app.get('/random', (req, res) => {
     const numQuery = req.query.cant;
     let numero;
     if(numQuery == undefined){
-        numero = 10;
+        numero = 100000000;
     }
     else{
         numero = parseInt(numQuery);

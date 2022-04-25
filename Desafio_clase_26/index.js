@@ -5,12 +5,9 @@ const dbConfig = require('./db/config.env');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 const cookieParser = require('cookie-parser');
-const { DB_PASSWORD, DB_NAME } = require('./db/config.env');
-
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
-
 
 app.use(cookieParser(['secret123abc']));
 app.use(session({
@@ -30,13 +27,13 @@ app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
     const user = req.session.user;
+    if (user == undefined) return res.redirect('/login');
     const username = user.split('@')[0];
     res.render('index.ejs', { username });
 })
 
 app.get('/register', (req, res) => {
-    const username = req.session.user;
-    console.log('usuario en register!', username);
+    console.log('USUARIO EN REGISTRO:' + req.session.user);
     res.render('register.ejs');
 })
 
@@ -45,10 +42,10 @@ app.post('/register', (req, res) => {
     const user = req.session.user;
     if(user == username) return res.redirect('/error-register');
     req.session.save(() => {
+        req.session.user = username;
         console.log('usuario guardado');
     });
-    console.log('username!!', username);
-    console.log('usuario!!',req.session);
+    console.log('USUARIO REGISTRADO:' + req.session.user);
     res.redirect('/login');
 })
 
@@ -57,16 +54,16 @@ app.get('/error-register', (req, res) => {
 })
 
 app.get('/login', (req, res) => {
+    console.log('USUARIO EN LOGIN!!!', req.session.user)
     res.render('login');
 })
 
 function isValidPassword(user, password) {
     return bcrypt.compareSync(password, user.password);
-}   
+};  
 
 app.post('/login', (req, res) => {
     const {username, password} = req.body;
-    //aca va la autenticacion con passport local
     passport.use('login', new LocalStrategy(async(username, password, done) => {
       user.findOne({username}, (err, user) => {
           if(err){
