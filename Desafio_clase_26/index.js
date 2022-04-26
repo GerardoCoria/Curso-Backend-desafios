@@ -37,17 +37,37 @@ app.get('/register', (req, res) => {
     res.render('register.ejs');
 })
 
+function isValidPassword(user, password) {
+    return bcrypt.compareSync(password, user.password);
+};  
+const salt = () => bcrypt.genSaltSync(10);
+const createHash = (password)=>{
+    bcrypt.hashSync(password, salt());
+}
+
 app.post('/register', (req, res) => {
-    const {username, password} = req.body;
-    const user = req.session.user;
-    if(user == username) return res.redirect('/error-register');
-    req.session.save(() => {
-        req.session.user = username;
-        console.log('usuario guardado');
-    });
-    console.log('USUARIO REGISTRADO:' + req.session.user);
-    res.redirect('/login');
+    //const {username, password} = req.body;
+    passport.use('register', new LocalStrategy({
+        passReqToCallback: true
+    },(req, username, password, done) => {
+        const userObj = {
+            username: username,
+            password: createHash(password)
+        }
+        const newUser = User.create(userObj);
+        console.log('el usuario se ha creado');
+        return done(null, newUser);
+    }))
 })
+
+    // if(user == username) return res.redirect('/error-register');
+    // req.session.save(() => {
+    //     req.session.user = username;
+    //     console.log('usuario guardado');
+    // });
+    // console.log('USUARIO REGISTRADO:' + req.session.user);
+//     res.redirect('/login');
+// })
 
 app.get('/error-register', (req, res) => {
     res.render('error-register.ejs');
@@ -58,27 +78,15 @@ app.get('/login', (req, res) => {
     res.render('login');
 })
 
-function isValidPassword(user, password) {
-    return bcrypt.compareSync(password, user.password);
-};  
+
 
 app.post('/login', (req, res) => {
     const {username, password} = req.body;
-    passport.use('login', new LocalStrategy(async(username, password, done) => {
+    passport.use('login', new LocalStrategy((username, password, done) => {
       user.findOne({username}, (err, user) => {
-          if(err){
-              return done(err);
-          }
-            if(!user){
-                console.log('no existe usuario');
-                return done(null, false);
-            }
-            if(!isValidPassword(user, password)){
-                console.log('contraseña incorrecta');
-                return done(null, false);
-            }
-            console.log('todo ok');
-            return done(null, user);
+          if (err) {return done(err);}
+          if (user) {return done(null, user);}
+          if (!isValidPassword(password)) {return done(null, false);}
         })
     }))
     const user = req.session.user;
