@@ -1,0 +1,6 @@
+# dependency directories
+node_modules/
+package-lock.json
+.env
+db/firebase.config.json
+db/config.env
