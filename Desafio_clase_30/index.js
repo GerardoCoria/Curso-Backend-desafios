@@ -5,6 +5,7 @@ const app = express();
 const os = require('os');
 const minimist = require('minimist');
 const { fork } = require('child_process');
+const numCPUs = os.cpus().length;
 let port;
 let server;
 
@@ -22,23 +23,31 @@ else{
     port = args.p;
 }
 
+if (args.s == undefined){
+    server = 'fork'
+}
+else{
+    server = args.s
+}
+
+//ver porque me aparece el error: cluster.fork() is not a function
+// if (cluster.isMaster){
+//     console.log('proceso primario')
+//     cluster.fork();
+// }else{
+//     console.log('proceso secundario');
+// }
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    if (args.s == undefined){
-        server = 'fork'
-    }
-    else{
-        server = args.s
-    }
     console.log(server)
     res.send(`<h3>El servidor es: ${server}</h3>`);
 })
 
 app.get('/info', (req, res) => {
-    const numbers = os.cpus().length;
-    res.send(`<h3>Número de procesadores del servidor: ${numbers}</h3>`);
+    res.send(`<h3>Número de procesadores del servidor: ${numCPUs}</h3>`)
 })
 
 app.get('/randoms', (req, res) => {
