@@ -1,9 +1,13 @@
 const express = require('express');
 const app = express();
-const port = process.env.port || 8080;
+const PORT = process.env.PORT || 3000;
+app.use(express.static('public')); 
 app.get('/', (req, res) => {
-    res.send('<h1>Desafío Clase 34</h1>');
+    res.send('Hola mundo');
 })
-app.listen(port, () => {
-    console.log(`Escuchando en el puerto ${port}`);
+app.get('/productos', (req, res) => {
+    res.sendFile(__dirname + '/public/index.html');
+})
+app.listen(PORT, () => {
+    console.log(`Escuchando en el puerto ${PORT}`);
 })
