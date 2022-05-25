@@ -1,0 +1,10 @@
+<h2>Carrito</h2>
+<h2>Productos</h2>
+<% for (const item of newCart) { %>
+    <div>
+        <h3><%= item.name %></h3>
+        <p>$ <%= item.price %></p>
+        <button>Eliminar del carrito</button>
+    </div>
+<% } %>
+<button>Confirmar compra</button>
