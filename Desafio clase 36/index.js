@@ -6,7 +6,7 @@ const apiRoutes = require('./routes/index.js');
 const MongoStore = require('connect-mongo');
 const mongoose = require('mongoose');
 const session = require('express-session');
-const config = require('./config');
+const config = require('./config').DB_PASSWORD;
 const passport = require('passport');
 
 app.use('/', apiRoutes);
@@ -32,7 +32,7 @@ app.set('views', './views');
 app.set('view engine', 'ejs');
 
 app.listen(PORT, async () => {
-    mongoose.connect(`mongodb+srv://gcoria1989:${config.DB_PASSWORD}@cluster0.c5lzx.mongodb.net/desafio_clase_26?retryWrites=true&w=majority`)
+    mongoose.connect(`mongodb+srv://gcoria1989:${config}@cluster0.c5lzx.mongodb.net/desafio_clase_26?retryWrites=true&w=majority`)
         .then(() => {
     console.log('Conectado a MongoDB');
     logger.info(`Server running on port ${PORT}`);
