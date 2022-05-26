@@ -23,7 +23,6 @@ async function sendMessage(){
             Gracias por su compra! Disfrute de: ${nameProduct}. Esperamos que disfrute su compra.`
         }
         const messageResponse = await twilioClient.messages.create(options);
-        console.log(messageResponse);
     }
     catch(e){
         console.log(e);

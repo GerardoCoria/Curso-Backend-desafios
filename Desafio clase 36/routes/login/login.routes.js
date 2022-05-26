@@ -1,6 +1,4 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const {Schema} = require('mongoose');
 const router = express.Router();
 const session = require('express-session');
 const initialize = require('../../utils/passport');
@@ -22,40 +20,11 @@ router.use(session({
 router.use(passport.initialize());
 router.use(passport.session());
 
-// const userSchema = new Schema({
-//     username: String,
-//     password: String,
-//     email: String,
-// });
-// const User = mongoose.model('User', userSchema);
-
 router.get('/', (req, res) => {
     res.render('index', {productos});
 });
 
-
-//RUTA DE PRUEBA!!!
-router.get('/users', (req, res) => {
-    User.find()
-        .then(users => res.send(users))
-        .catch(err => res.send(err))
-});
-
 router.get('/login', (req, res) => res.render('login'));
-
-// router.post('/login', (req, res) => {
-//     const {userName, password} = req.body;
-//     User.findOne({username: userName})
-//         .then(user => {
-//             if(user){
-//                 req.session.user = user;
-//                 res.render('home', {userName})
-//             }else{
-//                 res.render('errorLogin')
-//             }
-//         })
-//         .catch(err => res.send(err))
-// })
 
 router.post('/login', passport.authenticate('login', {
     successRedirect: '/',
