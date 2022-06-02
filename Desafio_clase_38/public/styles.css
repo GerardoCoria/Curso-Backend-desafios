@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Sen&display=swap');
+*{
+    font-family: 'Sen', sans-serif;
+}
+body{
+    background-color: #d0a9a9;
+}
+
+input{
+    width: 50%;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #d0a9a9;
+    padding: 0 10px;
+    margin-bottom: 20px;
+}
+
+button{
+    width: 30%;
+    height: 30px;
+    border-radius: 9px;
+    border: 1px solid #391919;
+    background-color: #d0a9a9;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}

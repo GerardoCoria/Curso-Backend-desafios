@@ -1,0 +1,10 @@
+<link rel="stylesheet" href="/styles.css"  type="text/css"/>
+
+<h2>Nuestros productos</h2>
+<% for (const item of products) {%>
+    <div>
+        <h3><%= item.name %> ($ <%= item.price %>)</h3>
+        <p><%= item.description %></p>
+        <button>Agregar al carrito</button>
+    </div>
+    <% } %>
