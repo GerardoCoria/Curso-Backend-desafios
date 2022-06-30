@@ -1,0 +1,49 @@
+query todos{
+  getProductsControllers{
+    id
+    named
+    price
+    description
+  }
+}
+
+
+query unosolo{
+  getProductControllers(id: "1"){
+    named
+    price
+    description
+  }
+}
+
+mutation crearuno{
+  createProductControllers(datos:
+  {
+    named: "Huevo de chocolate"
+    price: 400
+    description: "rico huevo de chocolate"
+  }){
+    id
+    named
+    price
+    description
+  }
+}
+
+mutation actualizar {
+  updateProductControllers(id:"1", datos:{
+    named: "Coco"
+    price: 2
+    description: "descripcion actualizada"
+  }){
+    named
+    description
+  }
+}
+
+
+mutation borraruno{
+  deleteProductControllers(id: "1"){
+    named
+  }
+}
