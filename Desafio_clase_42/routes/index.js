@@ -11,6 +11,8 @@ router.use('/products', productsRoutes);
 router.use('/login', loginRoutes);
 router.use('/register', registerRoutes);
 
+
+router.get('/', (req, res) => res.render('home.ejs'))
 router.get('/favicon.ico', (req, res) => res.status(204));
 
 module.exports = router;

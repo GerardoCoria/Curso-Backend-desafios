@@ -8,7 +8,7 @@ class MongoDao{
             return singleton;
         }
         else{  
-            singleton = this;
+            singleton = this; 
             this.connectToMongo().then(() => logger.info('Conectado a MongoDB!'));
         }
         this.model = mongoose.model(collection, Schema);

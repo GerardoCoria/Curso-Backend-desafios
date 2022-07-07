@@ -1,17 +1,17 @@
-const registerNewUserApi = require('../api/login.api');
+const registerNewUserApi = require('../api/register.api');
 
 const registerUserControllers = async (req, res, next) => {
-    res.send('registerUserControllers');
+    res.render('register.ejs')
 };
 
 const registerNewUserController = async (req, res, next) => {
     try{
-        const {username, email, password} = req.body;
-        const user = await registerNewUserApi(username, email, password);
-        res.json(user);
+        const data = req.body;
+        const user = await registerNewUserApi(data)
+        res.json(user)
     }
     catch(error){
-        next(res.render('error', {error}))
+        next(res.render('error', {error}));
     }
 };
 

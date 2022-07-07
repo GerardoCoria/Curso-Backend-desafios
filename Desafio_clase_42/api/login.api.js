@@ -1,4 +1,3 @@
-//importar desde el archivo datos de models
 const LoginMongoDao = require('../models/Schemas/login.schema');
 const newLoginDao = new LoginMongoDao();
 
@@ -15,4 +14,3 @@ module.exports = {
     getAllUsersApi,
     getUserByEmailApi
 };
-//exportar hacia los controladores
