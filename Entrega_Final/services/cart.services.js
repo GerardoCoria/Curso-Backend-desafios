@@ -1,8 +1,9 @@
 const { cartsDao } = require('../models/Factory/factory');
+const cartsdao = new cartsDao();
 
 const getCartServices = async () => {
     try{
-        const cart = await cartsDao.getAll();
+        const cart = await cartsdao.getAll();
         return cart;
     }
     catch(err){

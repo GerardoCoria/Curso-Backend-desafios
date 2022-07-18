@@ -3,9 +3,11 @@ const app = express();
 const port = process.env.PORT || 3000;
 const apiRoutes = require('./routes/index');
 
-app.use('/', apiRoutes);
-app.use(express.urlencoded({extended: true}));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(express.static(__dirname + '/public'));
+app.use('/', apiRoutes);
 app.set('views', './views');
 app.set('view engine', 'ejs');
 
@@ -15,5 +17,5 @@ app.listen(port, () => {
 
 app.get('/*', (req, res) => {
     console.log('Página no encontrada');
-    res.render('404')
+    res.render('errors_files/404.ejs');
 });

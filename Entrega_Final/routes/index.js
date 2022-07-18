@@ -13,8 +13,7 @@ router.use('/users', usersRoutes);
 router.use('/orders', ordersRoutes);
 router.use('/messages', messagesRoutes);
 
-
-router.get('/', (req, res) => res.render('home.ejs'))
+router.get('/', (req, res) => res.render('users/home.ejs'))
 router.get('/favicon.ico', (req, res) => res.status(204));
 
 module.exports = router;

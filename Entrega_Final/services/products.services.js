@@ -1,4 +1,6 @@
 const {productsDao} = require('../models/Factory/factory');
+const productsdao = new productsDao();
+
 const ProductsDTO = require('../models/DTO/products.dto');
 const axios = require('axios').default;
 const url = 'https://www.dolarsi.com/api/api.php?type=valoresprincipales'
@@ -35,7 +37,7 @@ const repositoryData = async () =>{
 
 const getAllProductsServices = async () =>{
     try{
-        const product = productsDao.getAll();
+        const product = productsdao.getAll()
         return product;
     }
     catch(error){

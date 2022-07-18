@@ -7,9 +7,9 @@ const {
 } = require('../services/products.services');
 
 
-const getProductControllers = (req, res) => {
-    const products = getAllProductsServices();
-    res.json(products)
+const getProductControllers = async (req, res) => {
+    const products = await getAllProductsServices();
+    res.render('products/all', { products });
 };
 
 const getByIdControllers = (req, res) =>{

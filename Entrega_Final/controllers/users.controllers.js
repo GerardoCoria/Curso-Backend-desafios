@@ -1,20 +1,32 @@
 const {
+    getalluser,
     newUserServices,
     getUserServices
 } = require('../services/users.services');
 
-const newUserControllers =  (req, res) => {
-    const user = newUserServices(req.body);
-    res.json(user);
+//prueba, borrar
+const getalluserControllers = async (req, res) => {
+    const users = await getalluser();
+    res.json(users);
 }
 
-const getUserControllers = (req, res) => {
-    const { id } = req.params;
-    const user = getUserServices(id);
-    res.json(user);
+const newUserControllers =  (req, res) => {
+    res.render('users/register');
+}
+
+const getUserControllers = async (req, res) => {
+    const { email } = req.body;
+    const user =  await getUserServices(email);
+    if(user){
+    res.redirect('/products');
+    }
+    else{
+        res.render('users/error-login');
+    }
 }
 
 module.exports = {
+    getalluserControllers,
     newUserControllers,
     getUserControllers
 }

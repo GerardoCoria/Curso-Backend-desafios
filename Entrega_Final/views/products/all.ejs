@@ -6,8 +6,14 @@
         <h3><%= item.name %></h3>
         <p><%= item.description %></p>
         <p>Precio:
-        <span>$<%= item.price %> AR / </span>
-        <span>$<%= item.priceDolar.toFixed(2)%> USD</span></p>
-        <button>Agregar al carrito</button>
-    </div>
-    <% } %>
+        <span>$<%= item.price %></span>
+      
+        <button onclick = "addToCart()">Agregar al carrito</button>
+
+        </div>  
+<% } %>
+<script>
+    function addToCart(){
+        alert("Agregando al carrito");
+    }
+</script>
