@@ -2,9 +2,8 @@ const MongoContainer = require('../../Containers/mongo.container');
 const {Schema} = require('mongoose');
 const collection = 'messages-list';
 const messagesSchema = new Schema({
-    id: Number,
-    userId: Number,
-    message: String
+    username: String,
+    text: String
 });
 class MessagesDaoMongo extends MongoContainer{
     constructor(){

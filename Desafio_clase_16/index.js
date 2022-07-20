@@ -12,7 +12,6 @@ const sqlite = require('sqlite3');
 const path = require('path');
 const mysql = require('mysql');
 const connectMysql = require('express-myconnection');
-const { builtinModules } = require('module');
 
 //MIDDLEWARES
 app.use(express.static('public'));

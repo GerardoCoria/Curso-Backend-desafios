@@ -11,7 +11,7 @@ router.use('/products', productsRoutes);
 router.use('/carts', cartsRoutes);
 router.use('/users', usersRoutes);
 router.use('/orders', ordersRoutes);
-router.use('/messages', messagesRoutes);
+router.use('/chat', messagesRoutes);
 
 router.get('/', (req, res) => res.render('users/home.ejs'))
 router.get('/favicon.ico', (req, res) => res.status(204));

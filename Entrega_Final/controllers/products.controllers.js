@@ -22,7 +22,7 @@ const createProductControllers = (req, res) =>{
     const datos = req.body;
     const product = createProductsServices(datos);
     res.json(product);
-}
+} 
 
 const updateProductControllers = (req, res) =>{
     const { id } = req.params;
