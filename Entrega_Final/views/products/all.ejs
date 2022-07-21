@@ -7,11 +7,15 @@
         <p><%= product.description %></p>
         <p>Precio:
         <span>$<%= product.price %></span>
+        <button onclick="window.location.href='/carts/<%= product._id %>'">Ver más</button>
+
         <button onclick="addToCart({
             name: '<%= product.name %>',
             price: '<%= product.price %>',
             quantity: 1
         })">Agregar al carrito</button>
+
+
     </div>  
 <% } %>
 
@@ -24,7 +28,6 @@
         } else {
             cart.push(product)
             console.log(cart)
-        }
-
+        };
     }
 </script>

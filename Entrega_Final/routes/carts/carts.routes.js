@@ -2,13 +2,13 @@ const express = require('express');
 const router = express.Router();
 const {
     getCartControllers,
-    newCartControllers,
+    newItemInCartControllers,
     updateCartControllers,
     deleteCartControllers
 } = require('../../controllers/carts.controllers');
 
 router.get('/', getCartControllers);
-router.post('/', newCartControllers);
+router.get('/:id', newItemInCartControllers);
 router.put('/:id', updateCartControllers);
 router.delete('/:id', deleteCartControllers);
 

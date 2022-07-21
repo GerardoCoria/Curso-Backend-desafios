@@ -11,10 +11,10 @@ const getCartServices = async () => {
     }
 };
 
-const newCartServices = async (cart) => {
+const newItemServices = async (item) => {
     try{
-        const newCart = await cartsDao.create(cart);
-        return newCart;
+        const newItem = await cartsdao.create(item);
+        return newItem;
     }
     catch(err){
         throw new Error(err);
@@ -23,7 +23,7 @@ const newCartServices = async (cart) => {
 
 const updateCartServices = async (cart) => {
     try{
-        const updateCart = await cartsDao.updateOne(cart);
+        const updateCart = await cartsdao.updateOne(cart);
         return updateCart;
     }
     catch(err){
@@ -33,7 +33,7 @@ const updateCartServices = async (cart) => {
 
 const deleteCartServices = async (id) => {
     try{
-        const deleteCart = await cartsDao.deleteOne(id);
+        const deleteCart = await cartsdao.deleteOne(id);
         return deleteCart;
     }
     catch(err){
@@ -43,7 +43,7 @@ const deleteCartServices = async (id) => {
 
 module.exports = {
     getCartServices,
-    newCartServices,
+    newItemServices,
     updateCartServices,
     deleteCartServices
 };
