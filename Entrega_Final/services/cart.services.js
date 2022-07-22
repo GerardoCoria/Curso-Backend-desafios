@@ -21,9 +21,15 @@ const newItemServices = async (item) => {
     }
 };
 
-const updateCartServices = async (cart) => {
+const updateCartServices = async (item) => {
     try{
-        const updateCart = await cartsdao.updateOne(cart);
+        const cart = await getCartServices();
+        // const id = cart[0].id;
+        // console.log('ID!!!', id);
+        console.log('CART', cart);
+        console.log('ITEM', item);
+        const updateCart = await cartsdao.update(cart, item);
+        console.log('UPDATE_CART', updateCart);
         return updateCart;
     }
     catch(err){

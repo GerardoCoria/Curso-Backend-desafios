@@ -12,9 +12,11 @@ const getProductControllers = async (req, res) => {
     res.render('products/all', { products });
 };
 
-const getByIdControllers = (req, res) =>{
+const getByIdControllers = async(req, res) =>{
     const { id } = req.params;
-    const product = getProductByIdServices(id);
+    //console.log('ID PARAMS', id);
+    const product = await getProductByIdServices(id);
+    //console.log('PRODUCT',product);
     res.json(product);
 }
 

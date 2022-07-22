@@ -2,10 +2,12 @@ const MongoContainer = require('../../Containers/mongo.container');
 const {Schema} = require('mongoose');
 const collection = 'carts-list';
 const cartsSchema = new Schema({
-    id: Number,
-    userId: Number,
+    id: String,
     products: [{
-        id: Number,
+        id: String,
+        name: String,
+        price: Number,
+        description: String,
         quantity: Number
     }]
 });
