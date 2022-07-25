@@ -7,27 +7,5 @@
         <p><%= product.description %></p>
         <p>Precio:
         <span>$<%= product.price %></span>
-        <button onclick="window.location.href='/carts/<%= product._id %>'">Ver más</button>
-
-        <button onclick="addToCart({
-            name: '<%= product.name %>',
-            price: '<%= product.price %>',
-            quantity: 1
-        })">Agregar al carrito</button>
-
-
-    </div>  
+        <button onclick="window.location.href='/carts/<%= product._id %>'">Agregar al carrito</button>  
 <% } %>
-
-<script>
-    let cart = []
-    function addToCart(product) {
-        if (cart.find(p => p.name === product.name)) {
-            cart.find(p => p.name === product.name).quantity++
-            console.log(cart)
-        } else {
-            cart.push(product)
-            console.log(cart)
-        };
-    }
-</script>

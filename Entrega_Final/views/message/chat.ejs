@@ -19,13 +19,17 @@
     <span id="chatBox">
     </span>
 
-    <form action="/chat" method="post">
-        <input type="text" name="username" id="username" placeholder="Ingrese su nombre" value="<%=messages.user%>"><br>
-        <textarea name="text" id="text" placeholder="Ingrese su mensaje"><%=messages.message%></textarea><br>
+    <!-- <form action="/chat" method="post">
+        <input type="text" name="username" id="username" placeholder="Ingrese su nombre"><br>
+        <textarea name="text" id="text" placeholder="Ingrese su mensaje"></textarea><br>
+        <input type="submit" id="btnSendChat" value="Enviar mensaje">
+    </form> -->
+
+    <form onsubmit="return addMsj(this)">
+        <input type="text" name="username" id="username" placeholder="Ingrese su nombre"><br>
+        <textarea name="text" id="text" placeholder="Ingrese su mensaje"></textarea><br>
         <input type="submit" id="btnSendChat" value="Enviar mensaje">
     </form>
-   
-    <button type="submit" onclick="location.href='/chat/delete'" >Borrar mensajes</button>
 
 </div> 
 

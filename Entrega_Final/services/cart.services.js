@@ -21,16 +21,35 @@ const newItemServices = async (item) => {
     }
 };
 
-const updateCartServices = async (item) => {
+const updateCartServices = async (cart, product) => {
     try{
-        const cart = await getCartServices();
-        // const id = cart[0].id;
-        // console.log('ID!!!', id);
-        console.log('CART', cart);
-        console.log('ITEM', item);
-        const updateCart = await cartsdao.update(cart, item);
-        console.log('UPDATE_CART', updateCart);
-        return updateCart;
+        console.log('CART EN SERVICES', cart);
+        console.log('PRODUCT EN SERVICES', product);
+        const updateCart = cart[0].products;
+        // if(cart.find(item => item.name === product.name)){
+        //     cart.find(item => item.name === product.name).quantity++;
+        // }
+        // else{
+        //     cart.push(product);
+        // }
+        if (updateCart.find(item => item.name === product.name)) {
+            console.log('el producto ya existe'); 
+            updateCart.find(item => item.name === product.name).quantity++;  
+        }
+        else {
+            updateCart.push({
+                name: product.name,
+                price: product.price,
+                description: product.description,
+                quantity: 1
+            });
+        }
+
+        //updateCart.push(product);
+        console.log('UPDATE CART EN SERVICES', updateCart);
+        console.log('CART EN SERVICES', cart[0].products);
+        const cartUpdated = await cartsdao.update(cart[0]._id, {products: updateCart});
+        return cartUpdated;
     }
     catch(err){
         throw new Error(err);

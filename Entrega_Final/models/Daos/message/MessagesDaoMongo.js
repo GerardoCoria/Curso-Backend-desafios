@@ -3,11 +3,12 @@ const {Schema} = require('mongoose');
 const collection = 'messages-list';
 const messagesSchema = new Schema({
     username: String,
-    text: String
+    text: String,
+    date: Date
 });
 class MessagesDaoMongo extends MongoContainer{
     constructor(){
         super(messagesSchema, collection);
     }
 }
-module.exports = MessagesDaoMongo;
+module.exports = MessagesDaoMongo; 

@@ -8,7 +8,7 @@ const cartsSchema = new Schema({
         name: String,
         price: Number,
         description: String,
-        quantity: Number
+        quantity: Number,
     }]
 });
 class CartDaoMongo extends MongoContainer{

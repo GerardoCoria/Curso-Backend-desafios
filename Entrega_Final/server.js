@@ -22,15 +22,25 @@ app.set('view engine', 'ejs');
 // });
 
 //-----------------------------------------------------
+const messages = require('./services/db/messages');
+
 httpServer.listen(port, () => {
     console.log(`Server running on port ${port}`)
 });
 io.on('connection', socket=>{
     console.log(`Servidor dice: Servidor iniciando`);
-    socket.emit('message', 'Bienvenido al chat');
-    socket.on('confirmation', data=>{
+    socket.emit('messages', [...messages]);
+    socket.on('confirmation', data =>{
         console.log(data);
-    })
+    });
+    socket.on('new-message', (data)=>{
+        messages.push({
+            username: data.username, 
+            text: data.text,
+            time: data.time
+        });
+        io.emit('messages', [...messages]);
+    });
 });
 //-----------------------------------------------------
 

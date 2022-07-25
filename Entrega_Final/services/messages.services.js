@@ -13,7 +13,12 @@ const getAllMessagesServices = async () => {
 
 const newMessagesServices = async (message) => {
     try{
-        const newMessage = await messagesdao.create(message);
+        let msj = {
+            username: message.username,
+            text: message.text,
+            date: new Date().toLocaleString()
+        };
+        const newMessage = await messagesdao.create(msj);
         return newMessage;
     }
     catch(error){

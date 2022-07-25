@@ -11,7 +11,6 @@ class MongoContainer{
     async getAll(){
         return await this.model.find();
     }
-
     async getById(id){
         return await this.model.find(id);
     }
