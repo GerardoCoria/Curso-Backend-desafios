@@ -15,11 +15,10 @@ const getCartControllers = async (req, res) => {
 };
 
 const newItemInCartControllers = async (req, res) => {
-    
     const product = await getProductByIdServices(req.params.id);
     const cart = await getCartServices();
     const newItem = await updateCartServices(cart, product);
-    res.json({product, cart});
+    res.render('carts/cart', {cart});
 };
 
 const updateCartControllers = async (req, res) => {

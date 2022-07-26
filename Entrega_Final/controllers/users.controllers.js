@@ -15,7 +15,7 @@ const newUserControllers =  (req, res) => {
 }
 
 const getUserControllers = async (req, res) => {
-    const { email } = req.body;
+    const email = req.params;
     const user =  await getUserServices(email);
     if(user){
     res.redirect('/products');

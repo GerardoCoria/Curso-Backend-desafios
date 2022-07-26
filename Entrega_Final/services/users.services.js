@@ -26,15 +26,22 @@ const newUserServices = async (user) => {
   }
 };
 
-const getUserServices = async (email) => {
-  console.log('mail!', email);
+const getUserServices = async (data) => {
+  console.log('DATA', data);
   const users = await usersdao.getAll();
-  const user = users.find(user => user.email === email);
-  console.log('user!', user);
+  console.log('USERS', users);
+  console.log('USER 1', users[0])
+  const user = users.find(item => item.email == data.id);
+  console.log('USER', user);
   if(user){
     return user;
   }
+  else{
+    return false;
+  }
 }
+
+//const item = products.find(product => product._id == idProduct);
 
 
 module.exports = {

@@ -4,20 +4,23 @@ const {
     deleteOrderServices
 } = require('../services/orders.services');
 
-const getOrderControllers = (req, res) => {
-    const order = getOrdersServices();
+const {getCartServices} = require('../services/cart.services');
+
+const getOrderControllers = async (req, res) => {
+    const cart = await getCartServices();
+    const order = await getOrdersServices();
+    res.render('orders/orders', {cart});
+}
+
+const newOrderControllers = async (req, res) => {
+    const order = await newOrderServices(req.body);
     res.json(order);
 }
 
-const newOrderControllers = (req, res) => {
-    const order = newOrderServices(req.body);
+const deleteOrderControllers = async (req, res) => {
+    const order = await deleteOrderServices(req.params.id);
     res.json(order);
-}
-
-const deleteOrderControllers = (req, res) => {
-    const order = deleteOrderServices(req.params.id);
-    res.json(order);
-}
+} 
 
 module.exports = {
     getOrderControllers,
