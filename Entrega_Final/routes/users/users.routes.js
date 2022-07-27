@@ -25,11 +25,11 @@ router.use(passport.session());
 
 router.get('/todos', getalluserControllers);
 router.get('/register', newUserControllers);
-// router.post('/user', getUserControllers);
-router.post('/user', passport.authenticate('login', {
-    successRedirect: '/products',
-    failureRedirect: '/users/error',
-}));
+router.post('/user', getUserControllers);
+// router.post('/user', passport.authenticate('login', {
+//     successRedirect: '/products',
+//     failureRedirect: '/users/error',
+// }));
 
 router.get('/error', (req, res) => {
     res.render('users/error-login');

@@ -19,12 +19,12 @@ function initialize(){
     passport.use('login',new localStrategy({
         usernameField: 'username',
         passwordField: 'password',
-        passReqToCallback: true
-    }, async (req, username, password, done) => {
-        const userInDB = await UsersDaoMongo.getById({username: username})
-
+        passReqToCallback: true,
+    },
+    async (req, username, password, done) => {
+        const userInDB = await UsersDaoMongo.findOne({username: username})
         if(userInDB){
-            req.session.user = userInDB.username;
+            req.session.username = userInDB.username;
             return done(null, userInDB)
         }
             return done(null, false)
@@ -32,11 +32,11 @@ function initialize(){
 }
   
 passport.serializeUser((username, done)=>{
-    done(null, username.id);
+    done(null, username._id);
 });
 passport.deserializeUser(async(id, done) =>{
-    const user = await UsersDaoMongo.getById(id);
-    done(null, UsersDaoMongo);
+    const user = await UsersDaoMongo.findOne(id);
+    done(null, user);
 });
 
 module.exports = initialize;

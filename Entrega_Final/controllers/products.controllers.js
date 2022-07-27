@@ -6,7 +6,6 @@ const {
     deleteProductsServices,
 } = require('../services/products.services');
 
-
 const getProductControllers = async (req, res) => {
     const products = await getAllProductsServices();
     res.render('products/all', { products });

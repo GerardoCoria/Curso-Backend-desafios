@@ -31,7 +31,7 @@ const getUserServices = async (data) => {
   const users = await usersdao.getAll();
   console.log('USERS', users);
   console.log('USER 1', users[0])
-  const user = users.find(item => item.email == data.id);
+  const user = users.find(item => item.email == data);
   console.log('USER', user);
   if(user){
     return user;
