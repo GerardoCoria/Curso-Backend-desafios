@@ -62,7 +62,7 @@ const getProductByIdServices = async (id) =>{
 
 const createProductsServices = (datos) =>{
     try{
-        const products = productsDao.getAll();
+        const products = productsdao.getAll();
         const id = products.length + 1;
         const newProduct = new Product(id, datos);
         productsDao.create(newProduct);
@@ -77,7 +77,7 @@ const updateProductsServices = (item, datos)=>{
     try{
         const id = +item;
         const product = new Product(id, datos);
-        productsDao.update(id, product);
+        productsdao.update(id, product);
         return product;
     }
     catch(error){
@@ -87,7 +87,7 @@ const updateProductsServices = (item, datos)=>{
 
 const deleteProductsServices = (id) =>{
     try{
-        const product = productsDao.delete(id);
+        const product = productsdao.delete(id);
         return product;
     }
     catch(error){

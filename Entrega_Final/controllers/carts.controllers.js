@@ -10,8 +10,6 @@ const {getProductByIdServices} = require('../services/products.services');
 const getCartControllers = async (req, res) => {
     const cart = await getCartServices();
     res.render('carts/cart', {cart});
-    // console.log(cart[0].products);
-    // res.json(cart);
 };
 
 const newItemInCartControllers = async (req, res) => {

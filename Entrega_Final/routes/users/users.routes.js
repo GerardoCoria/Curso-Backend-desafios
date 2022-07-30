@@ -13,7 +13,7 @@ initialize(passport);
 router.use(session({
     secret: 'secret123abc',
     resave: false,
-    saveUninitialized: false,
+    saveUninitialized: true,
     rolling: true,
     cookie:{
         maxAge: 5000,
