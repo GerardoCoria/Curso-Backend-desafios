@@ -16,10 +16,10 @@ switch(PERS){
         break;
     case 'mem':
         productsDao = require('../Daos/products/ProductDaoMem');
-        cartsDao = require('../Daos/products/ProductDaoMem');
-        usersDao = require('../Daos/products/ProductDaoMem');
-        ordersDao = require('../Daos/products/ProductDaoMem');
-        messagesDao = require('../Daos/products/ProductDaoMem');
+        cartsDao = require('../Daos/carts/CartsDaoMem');
+        usersDao = require('../Daos/users/UsersDaoMem');
+        ordersDao = require('../Daos/orders/OrdersDaoMem');
+        messagesDao = require('../Daos/message/MessageDaoMem');
         break;
     default:
         throw new Error('Persistence not supported');

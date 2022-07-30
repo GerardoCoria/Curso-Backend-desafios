@@ -7,6 +7,7 @@ const productsSchema = new Schema({
     price: Number,
     description: String
 });
+
 class ProductsDaoMongo extends MongoContainer{
     constructor(){
         super(productsSchema, collection);

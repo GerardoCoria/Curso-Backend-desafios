@@ -1,6 +1,6 @@
 class MemContainer{
-    constructor(){
-        this.db = productsDB;
+    constructor(db){
+        this.db = db;
     }
     getAll(){
         return this.db;

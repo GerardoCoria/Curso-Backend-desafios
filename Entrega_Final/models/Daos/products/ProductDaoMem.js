@@ -1,10 +1,9 @@
-const MenContainer = require('../../Containers/mem.container');
-const collection = 'products-list-mem';
+const MemContainer = require('../../Containers/mem.container');
+const collection = require('../../db/db.mem').products;
 
-const productsMem = {}
-class ProductsDaoMem extends MongoContainer{
+class ProductsDaoMem extends MemContainer{
     constructor(){
-        super(productsMem, collection);
+        super(collection);
     }
 }
 module.exports = ProductsDaoMem;

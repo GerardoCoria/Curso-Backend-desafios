@@ -1,13 +1,11 @@
 const { usersDao } = require('../models/Factory/factory');
+const usersdao = new usersDao();
 
-//prueba, borrar
-const UsersDaoMongo = require('../models/Daos/users/UsersDaoMongo');
-//const usersDaoMongo = new UsersDaoMongo();
-const usersdao = new UsersDaoMongo();
 const getalluser = async () => {
     try{
         const users = await usersdao.getAll();
-        console.log(users);
+        console.log('user en services',users);
+        console.log('user daos es ', usersdao);
         return users;
     }
     catch(err){
