@@ -16,7 +16,7 @@ const getalluser = async () => {
 
 const newUserServices = async (user) => {
   try{
-    const newUser = await usersDao.create(user);
+    const newUser = await usersdao.create(user);
     return newUser;
   }
   catch(err){

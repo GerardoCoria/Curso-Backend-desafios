@@ -14,7 +14,10 @@ const getalluserControllers = async (req, res) => {
 }
 
 const newUserControllers =  (req, res) => {
-    res.render('users/register');
+    const user = req.body;
+    console.log('intento de registro', user);
+    newUserServices(user);
+    res.render('users/register-success');
 }
 
 const getUserControllers = async (req, res) => {
@@ -22,12 +25,12 @@ const getUserControllers = async (req, res) => {
     console.log('email en users.controllers', email);
     const user =  await getUserServices(email);
     const products = await getAllProductsServices();
-    const username = email.split('@')[0].charAt(0).toUpperCase() + email.split('@')[0].slice(1);
     if(user){
-    res.render('products/all', { products, username });
+        const username = email.split('@')[0].charAt(0).toUpperCase() + email.split('@')[0].slice(1);
+        res.render('products/all', { products, username });
     }
     else{
-        res.render('users/error-login');
+        res.redirect('/users/error');
     }
 }
 

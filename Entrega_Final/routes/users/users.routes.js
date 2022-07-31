@@ -24,16 +24,15 @@ router.use(passport.session());
 
 
 router.get('/todos', getalluserControllers);
-router.get('/register', newUserControllers);
+router.get('/register', (req, res) => res.render('users/register'));
+router.post('/register', newUserControllers);
 router.post('/user', getUserControllers);
 // router.post('/user', passport.authenticate('login', {
 //     successRedirect: '/products',
 //     failureRedirect: '/users/error',
 // }));
 
-router.get('/error', (req, res) => {
-    res.render('users/error-login');
-});
+router.get('/error', (req, res) => res.render('users/error-login'));
 
 router.get('/:id', getUserControllers)
 

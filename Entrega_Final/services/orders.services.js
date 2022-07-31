@@ -1,9 +1,9 @@
 const { ordersDao } = require('../models/Factory/factory');
-const ordesdao = new ordersDao();
+const ordersdao = new ordersDao();
 
 const getOrdersServices = async () => {
     try{
-        const order = await ordesdao.getAll();
+        const order = await ordersdao.getAll();
         return order;
     }
     catch(err){
@@ -13,7 +13,7 @@ const getOrdersServices = async () => {
 
 const newOrderServices = async () => {
     try{
-        const order = await ordesdao.create(req.body);
+        const order = await ordersdao.create(req.body);
         return order;
     }
     catch(err){
@@ -23,7 +23,7 @@ const newOrderServices = async () => {
 
 const deleteOrderServices = async (id) => {
     try{
-        const order = await ordesdao.deleteOne(id);
+        const order = await ordersdao.deleteOne(id);
         return order;
     }
     catch(err){
