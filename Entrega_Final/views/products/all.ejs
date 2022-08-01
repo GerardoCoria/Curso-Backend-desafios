@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="/styles.css"  type="text/css"/>
 
-<h1>Bienvenido <%= username %>!</h1>
+
 
 <h2>Nuestros productos</h2>
 <% for (const product of products) {%>
@@ -11,3 +11,6 @@
         <span>$<%= product.price %></span>
         <button onclick="window.location.href='/carts/<%= product._id %>'">Agregar al carrito</button>  
 <% } %>
+<div>
+    <button onclick="window.location.href='/carts'">Ver carrito</button>
+</div>
