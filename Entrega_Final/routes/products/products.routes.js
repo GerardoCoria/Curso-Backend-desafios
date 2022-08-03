@@ -8,8 +8,6 @@ const {
     deleteProductControllers
 } = require('../../controllers/products.controllers');
 
-
-
 router.get('/', getProductControllers);
 router.get('/:id', getByIdControllers);
 router.post('/', createProductControllers);

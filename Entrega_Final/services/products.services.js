@@ -1,9 +1,9 @@
 const {productsDao} = require('../models/Factory/factory');
 const productsdao = new productsDao();
 
-const ProductsDTO = require('../models/DTO/products.dto');
-const axios = require('axios').default;
-const url = 'https://www.dolarsi.com/api/api.php?type=valoresprincipales'
+// const ProductsDTO = require('../models/DTO/products.dto');
+// const axios = require('axios').default;
+// const url = 'https://www.dolarsi.com/api/api.php?type=valoresprincipales'
 
 // const getDolar = async () =>{
 //    try{
@@ -12,7 +12,7 @@ const url = 'https://www.dolarsi.com/api/api.php?type=valoresprincipales'
 //          return infoDolar;
 //    }
 //     catch(error){
-//         console.log(error);
+//         console.log('Error en GetDolar:',error);
 //     }
 // };
 
@@ -24,7 +24,7 @@ const url = 'https://www.dolarsi.com/api/api.php?type=valoresprincipales'
 // });
 
 // const repositoryData = async () =>{
-//     const product = await newProductDao.getAll();
+//     const product = await productsdao.getAll();
    
 //     console.log('dolar en api', dolar)
 //     console.log(typeof dolar)
@@ -48,11 +48,8 @@ const getAllProductsServices = async () =>{
 const getProductByIdServices = async (id) =>{
     try{
         const idProduct = id;
-        //console.log('ID_PRODUCT', idProduct);
         const products = await productsdao.getAll();
-        //console.log('products', products);
         const item = products.find(product => product._id == idProduct);
-        //console.log('ITEM EN SERVICES', item);
         return item;
     }
     catch(error){

@@ -1,6 +1,3 @@
-// https://www.dolarsi.com/api/dolarSiInfo.xml
-// https://api-dolar-argentina.herokuapp.com/api/dolarblue
-// https://www.dolarsi.com/api/api.php?type=valoresprincipales
 const axios = require('axios').default;
 const url = 'https://www.dolarsi.com/api/api.php?type=valoresprincipales'
 

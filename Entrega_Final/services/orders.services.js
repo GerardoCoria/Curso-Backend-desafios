@@ -28,7 +28,7 @@ function sendEmail(data){
     };
     transporter.sendMail(mailOptions, function(error, info){
         if (error) {
-            console.log('tengo un error:',error);
+            console.log(error);
         } else {
             console.log('Email enviado correctamente');
         }
@@ -37,15 +37,10 @@ function sendEmail(data){
 
 const getOrdersServices = async (cart) => {
     try{
-        console.log('el carrito a ser pusheado:', cart[0].products);
         const orders = await ordersdao.getAll();
-        console.log('orders, con S, es', orders);
         const order = orders[0].products;
-        console.log('la orden vacia es: ', order);
         const id = orders[0]._id;
-        console.log('el id de la orden: ', id);
         const newOrder = await ordersdao.update({_id: id}, {products: cart[0].products});
-        console.log('la orden con el carrito pusheado es: ', order);
         sendEmail(order);
         return newOrder;
     }
@@ -54,28 +49,6 @@ const getOrdersServices = async (cart) => {
     }
 }
 
-// const newOrderServices = async () => {
-//     try{
-//         const order = await ordersdao.create(req.body);
-//         return order;
-//     }
-//     catch(err){
-//         throw new Error(err);
-//     } 
-// }
-
-// const deleteOrderServices = async (id) => {
-//     try{
-//         const order = await ordersdao.deleteOne(id);
-//         return order;
-//     }
-//     catch(err){
-//         throw new Error(err);
-//     }
-// }
-
 module.exports = {
     getOrdersServices,
-    // newOrderServices,
-    // deleteOrderServices
 };

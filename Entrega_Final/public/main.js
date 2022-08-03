@@ -28,7 +28,6 @@ socket.on('messages', (data) => {
     renderMsj(data);
 });
 
-
 function addMsj (){
     const msj = {
         username: document.getElementById('username').value,

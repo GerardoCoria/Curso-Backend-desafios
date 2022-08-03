@@ -23,11 +23,8 @@ const newItemServices = async (item) => {
 
 const updateCartServices = async (cart, product) => {
     try{
-        console.log('CART EN SERVICES', cart);
-        console.log('PRODUCT EN SERVICES', product);
         const updateCart = cart[0].products;
         if (updateCart.find(item => item.name === product.name)) {
-            console.log('el producto ya existe'); 
             updateCart.find(item => item.name === product.name).quantity++;  
         }
         else {
@@ -38,8 +35,6 @@ const updateCartServices = async (cart, product) => {
                 quantity: 1
             });
         };
-        console.log('UPDATE CART EN SERVICES', updateCart);
-        console.log('CART EN SERVICES', cart[0].products);
         const cartUpdated = await cartsdao.update(cart[0]._id, {products: updateCart});
         return cartUpdated;
     }
