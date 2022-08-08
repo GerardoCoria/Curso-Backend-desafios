@@ -1,43 +1,45 @@
 const {productsDao} = require('../models/Factory/factory');
 const productsdao = new productsDao();
 
-// const ProductsDTO = require('../models/DTO/products.dto');
-// const axios = require('axios').default;
-// const url = 'https://www.dolarsi.com/api/api.php?type=valoresprincipales'
+const ProductsDTO = require('../models/DTO/products.dto');
+const axios = require('axios').default;
+const url = 'https://www.dolarsi.com/api/api.php?type=valoresprincipales'
+const stock = require('../models/db/stock.js');
 
-// const getDolar = async () =>{
-//    try{
-//          const response = await axios.get(url);
-//          const infoDolar = response.data[1].casa.venta;
-//          return infoDolar;
-//    }
-//     catch(error){
-//         console.log('Error en GetDolar:',error);
-//     }
-// };
+const getDolar = async () =>{
+   try{
+         const response = await axios.get(url);
+         const infoDolar = response.data[1].casa.venta;
+         return infoDolar;
+   }
+    catch(error){
+        console.log('Error en GetDolar:',error);
+    }
+};
 
-// let dolar = getDolar()
-// dolar.then(valor => {
-//     dolar = parseInt(valor);
-// }).catch(error => {
-//     console.log(error);
-// });
+let dolar = getDolar()
+dolar.then(valor => {
+    dolar = parseInt(valor);
+}).catch(error => {
+    console.log(error);
+});
 
-// const repositoryData = async () =>{
-//     const product = await productsdao.getAll();
-   
-//     console.log('dolar en api', dolar)
-//     console.log(typeof dolar)
-//     const products = product.map(product => new ProductsDTO(product, dolar));
-//     products.map (product => {
-//         product.infoStock = stock[product.item - 1];
-//     })
-//     return products;
-// }
+const repositoryData = async () =>{
+    const product = await productsdao.getAll();
+    const products = product.map(product => new ProductsDTO(product, dolar));
+    products.map(item => {
+        item.stock = stock.find(stock => stock.id == item._id).stock;
+        item.batch = stock.find(stock => stock.id == item._id).batch;
+        item.expire = stock.find(stock => stock.id == item._id).expire;
+    });
+    return products;
+}
 
 const getAllProductsServices = async () =>{
     try{
-        const product = productsdao.getAll()
+        //const product = productsdao.getAll()
+        const product = await repositoryData();
+        console.log(product);
         return product;
     }
     catch(error){
